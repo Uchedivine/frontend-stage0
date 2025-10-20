@@ -1,0 +1,223 @@
+  :root {
+            --color-bg-primary: #111827;
+            --color-bg-secondary: #1f2937;
+            --color-bg-tertiary: #374151;
+            --color-text-primary: #ffffff;
+            --color-text-secondary: #d1d5db;
+            --color-text-tertiary: #9ca3af;
+            --color-border: #374151;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Accessibility: Custom Focus Style */
+        *:focus-visible {
+            outline: 3px solid #60a5fa;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* Main Profile Card Styles */
+        .profile-card {
+            background-color: var(--color-bg-secondary);
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            width: 100%;
+            max-width: 64rem; /* Increased max-width for better desktop layout */
+            margin: auto;
+            overflow: hidden;
+            padding: 2.5rem;
+        }
+
+        .main-info {
+            text-align: center;
+        }
+
+        .avatar-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .avatar-figure {
+            position: relative;
+            width: 10rem;
+            height: 10rem;
+        }
+
+        .avatar-img {
+            border-radius: 9999px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 4px solid var(--color-border);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .user-name {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        
+        .user-bio {
+            margin-top: 0.75rem;
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+            line-height: 1.75rem;
+        }
+
+        .time-display {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: var(--color-text-tertiary);
+        }
+
+        .time-value {
+            font-family: monospace;
+            background-color: #374151;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+        }
+
+        .social-links-nav {
+            margin-top: 1.5rem;
+        }
+        
+        .social-links-list {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .social-link a {
+            color: var(--color-text-tertiary);
+            transition: color 0.3s ease;
+        }
+
+        .social-link a:hover {
+            color: var(--color-text-primary);
+        }
+
+        .social-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Hobbies & Dislikes Sections */
+        .details-grid {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .details-heading {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            font-weight: 600;
+        }
+
+        .tags-list {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center tags on mobile */
+            gap: 0.5rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.625rem;
+            border-radius: 9999px;
+        }
+
+        .tag-teal { background-color: rgba(20, 184, 166, 0.2); color: #5eead4; }
+        .tag-sky { background-color: rgba(14, 165, 233, 0.2); color: #7dd3fc; }
+        .tag-indigo { background-color: rgba(99, 102, 241, 0.2); color: #a5b4fc; }
+        .tag-rose { background-color: rgba(244, 63, 94, 0.2); color: #fda4af; }
+        .tag-gray { background-color: #4b5563; color: #d1d5db; }
+
+        /* Responsive Styles */
+        @media (min-width: 768px) {
+             /* Tablet: Avatar left, text right */
+            .main-info {
+                display: flex;
+                gap: 2.5rem;
+                text-align: left;
+            }
+            .avatar-section {
+                margin-bottom: 0;
+                flex-shrink: 0; /* Prevent avatar from shrinking */
+            }
+             .social-links-list {
+                justify-content: flex-start;
+            }
+            .tags-list {
+                 align-items: flex-start;
+            }
+             .details-grid {
+                 grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            /* Desktop: Two-column layout */
+            .card-content {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 3rem;
+                align-items: start;
+            }
+             .details-grid {
+                margin-top: 0;
+                padding-top: 0;
+                border-top: none;
+            }
+        }

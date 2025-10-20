@@ -1,4 +1,4 @@
-  :root {
+:root {
             --color-bg-primary: #111827;
             --color-bg-secondary: #1f2937;
             --color-bg-tertiary: #374151;
@@ -6,6 +6,9 @@
             --color-text-secondary: #d1d5db;
             --color-text-tertiary: #9ca3af;
             --color-border: #374151;
+            --color-accent: #3b82f6;
+            --color-success: #22c55e;
+            --color-error: #ef4444;
         }
 
         *, *::before, *::after {
@@ -19,24 +22,16 @@
             background-color: var(--color-bg-primary);
             color: var(--color-text-primary);
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
             min-height: 100vh;
             padding: 1rem;
         }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
+        
+        main {
+            width: 100%;
+            max-width: 64rem;
+            margin: 1rem auto;
         }
 
         /* Accessibility: Custom Focus Style */
@@ -45,17 +40,60 @@
             outline-offset: 2px;
             border-radius: 4px;
         }
+        
+        /* Navigation Styles */
+        .main-nav {
+            width: 100%;
+            max-width: 64rem;
+            padding: 1rem 0;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--color-border);
+        }
 
-        /* Main Profile Card Styles */
+        .nav-list {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--color-text-secondary);
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--color-bg-tertiary);
+            color: var(--color-text-primary);
+        }
+
+        /* Page Styles */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Profile Card Styles */
         .profile-card {
             background-color: var(--color-bg-secondary);
             border-radius: 1rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            width: 100%;
-            max-width: 64rem; /* Increased max-width for better desktop layout */
-            margin: auto;
             overflow: hidden;
             padding: 2.5rem;
+        }
+        
+        .card-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
         }
 
         .main-info {
@@ -68,156 +106,131 @@
             margin-bottom: 1.5rem;
         }
 
-        .avatar-figure {
-            position: relative;
-            width: 10rem;
-            height: 10rem;
-        }
-
-        .avatar-img {
-            border-radius: 9999px;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border: 4px solid var(--color-border);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-
-        .user-name {
-            font-size: 2.25rem;
-            line-height: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.025em;
-        }
-        
-        .user-bio {
-            margin-top: 0.75rem;
-            color: var(--color-text-secondary);
-            font-size: 1rem;
-            line-height: 1.75rem;
-        }
-
-        .time-display {
-            margin-top: 1rem;
-            font-size: 0.875rem;
-            color: var(--color-text-tertiary);
-        }
-
-        .time-value {
-            font-family: monospace;
-            background-color: #374151;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.375rem;
-        }
-
-        .social-links-nav {
-            margin-top: 1.5rem;
-        }
-        
-        .social-links-list {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-        
-        .social-link a {
-            color: var(--color-text-tertiary);
-            transition: color 0.3s ease;
-        }
-
-        .social-link a:hover {
-            color: var(--color-text-primary);
-        }
-
-        .social-icon {
-            width: 1.5rem;
-            height: 1.5rem;
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-
-        /* Hobbies & Dislikes Sections */
-        .details-grid {
-            margin-top: 2.5rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--color-border);
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .details-heading {
-            font-size: 1.125rem;
-            line-height: 1.75rem;
-            font-weight: 600;
-        }
-
-        .tags-list {
-            margin-top: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center tags on mobile */
-            gap: 0.5rem;
-        }
-
-        .tag {
-            font-size: 0.75rem;
-            font-weight: 500;
-            padding: 0.25rem 0.625rem;
-            border-radius: 9999px;
-        }
-
+        .avatar-figure { position: relative; width: 10rem; height: 10rem; }
+        .avatar-img { border-radius: 9999px; width: 100%; height: 100%; object-fit: cover; border: 4px solid var(--color-border); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .user-name { font-size: 2.25rem; line-height: 2.5rem; font-weight: 700; letter-spacing: -0.025em; }
+        .user-bio { margin-top: 0.75rem; color: var(--color-text-secondary); font-size: 1rem; line-height: 1.75rem; }
+        .time-display { margin-top: 1rem; font-size: 0.875rem; color: var(--color-text-tertiary); }
+        .time-value { font-family: monospace; background-color: #374151; padding: 0.25rem 0.5rem; border-radius: 0.375rem; }
+        .social-links-nav { margin-top: 1.5rem; }
+        .social-links-list { display: flex; align-items: center; justify-content: center; gap: 1rem; }
+        .social-link a { color: var(--color-text-tertiary); transition: color 0.3s ease; }
+        .social-link a:hover { color: var(--color-text-primary); }
+        .social-icon { width: 1.5rem; height: 1.5rem; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+        .details-grid { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--color-border); display: grid; grid-template-columns: 1fr; gap: 2rem; }
+        .details-heading { font-size: 1.125rem; line-height: 1.75rem; font-weight: 600; }
+        .tags-list { margin-top: 1rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+        .tag { font-size: 0.75rem; font-weight: 500; padding: 0.25rem 0.625rem; border-radius: 9999px; }
         .tag-teal { background-color: rgba(20, 184, 166, 0.2); color: #5eead4; }
         .tag-sky { background-color: rgba(14, 165, 233, 0.2); color: #7dd3fc; }
         .tag-indigo { background-color: rgba(99, 102, 241, 0.2); color: #a5b4fc; }
         .tag-rose { background-color: rgba(244, 63, 94, 0.2); color: #fda4af; }
         .tag-gray { background-color: #4b5563; color: #d1d5db; }
 
+        /* About Me Page Styles */
+        .about-page {
+             background-color: var(--color-bg-secondary);
+             border-radius: 1rem;
+             padding: 2.5rem;
+        }
+        .about-page h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .about-page section {
+            margin-bottom: 2rem;
+        }
+        .about-page h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            border-bottom: 2px solid var(--color-border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .about-page p {
+            color: var(--color-text-secondary);
+            line-height: 1.75;
+        }
+
+        /* Contact Page Styles */
+        .contact-page {
+            background-color: var(--color-bg-secondary);
+            border-radius: 1rem;
+            padding: 2.5rem;
+        }
+        .contact-page h2 {
+             font-size: 1.875rem;
+             font-weight: 700;
+             margin-bottom: 2rem;
+             text-align: center;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background-color: var(--color-bg-tertiary);
+            border: 1px solid var(--color-border);
+            border-radius: 0.375rem;
+            color: var(--color-text-primary);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+        }
+        .form-error {
+            color: var(--color-error);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background-color: var(--color-accent);
+            color: var(--color-text-primary);
+            font-weight: 600;
+            border: none;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #2563eb;
+        }
+        .success-message {
+            background-color: rgba(34, 197, 94, 0.2);
+            color: var(--color-success);
+            padding: 1rem;
+            border-radius: 0.375rem;
+            text-align: center;
+            font-weight: 500;
+            margin-top: 1.5rem;
+            display: none;
+        }
+
+
         /* Responsive Styles */
         @media (min-width: 768px) {
-             /* Tablet: Avatar left, text right */
-            .main-info {
-                display: flex;
-                gap: 2.5rem;
-                text-align: left;
-            }
-            .avatar-section {
-                margin-bottom: 0;
-                flex-shrink: 0; /* Prevent avatar from shrinking */
-            }
-             .social-links-list {
-                justify-content: flex-start;
-            }
-            .tags-list {
-                 align-items: flex-start;
-            }
-             .details-grid {
-                 grid-template-columns: repeat(2, 1fr);
-            }
+            .main-info { display: flex; gap: 2.5rem; text-align: left; }
+            .avatar-section { margin-bottom: 0; flex-shrink: 0; }
+            .social-links-list { justify-content: flex-start; }
+            .tags-list { justify-content: flex-start; }
+            .details-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (min-width: 1024px) {
-            /* Desktop: Two-column layout */
-            .card-content {
-                display: grid;
-                grid-template-columns: 2fr 1fr;
-                gap: 3rem;
-                align-items: start;
-            }
-             .details-grid {
-                margin-top: 0;
-                padding-top: 0;
-                border-top: none;
-            }
+            .card-content { grid-template-columns: 2fr 1fr; gap: 3rem; align-items: start; }
+            .details-grid { margin-top: 0; padding-top: 0; border-top: none; }
         }
